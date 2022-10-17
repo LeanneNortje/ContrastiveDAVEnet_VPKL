@@ -262,7 +262,6 @@ def spawn_training(rank, world_size, image_base, args):
                 boundaries[name + "_" + number].setdefault('boundaries', []).append((parts[2], parts[3], parts[4].lower()))
         print('Num boundaries: ', len(boundaries))
 
-
         with open('data/flickr8k.pickle', "rb") as f:
             data = pickle.load(f)
 
@@ -277,8 +276,6 @@ def spawn_training(rank, world_size, image_base, args):
         RGB_mean = image_conf.get('RGB_mean')
         RGB_std = image_conf.get('RGB_std')
 
-        # image_resize_and_crop = transforms.Compose(
-        #         [transforms.Resize(224), transforms.ToTensor()])
         resize = transforms.Resize((256, 256))
         to_tensor = transforms.ToTensor()
         image_normalize = transforms.Normalize(mean=RGB_mean, std=RGB_std)
@@ -361,7 +358,7 @@ def spawn_training(rank, world_size, image_base, args):
             for word in images_for_keywords:
                 for im_fn, _ in images_for_keywords[word]:
                     image = LoadImage(
-                        Path('/storage/Datasets/Flicker8k_Dataset') / Path((im_fn.stem) + '.jpg'), resize, image_normalize, to_tensor)
+                        Path(args['path']) / Path('Flicker8k_Dataset') / Path((im_fn.stem) + '.jpg'), resize, image_normalize, to_tensor)
                     images.append(image.unsqueeze(0).cpu())
 
                 iVOCAB[num_word] = word

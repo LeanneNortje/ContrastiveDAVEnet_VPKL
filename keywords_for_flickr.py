@@ -63,42 +63,10 @@ nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger')
 from nltk.tokenize import word_tokenize, sent_tokenize
 
-VOCAB = [
-        'air', 
-        'baby',
-        'ball',
-        'beach',
-        'bike',
-        'boy',
-        'building',
-        'car',
-        'children',
-        'dirt',
-        'dogs',
-        'face',
-        'field',
-        'football',
-        'grass',
-        'hair',
-        'mountain',
-        'mouth',
-        'ocean',
-        'park',
-        'pool',
-        'road',
-        'rock',
-        'sand',
-        'skateboard',
-        'smiling',
-        'snow',
-        'snowy',
-        'soccer',
-        'street',
-        'toy',
-        'tree',
-        'water',
-        'women'
-        ]
+VOCAB = []
+with open('./data/34_keywords.txt', 'r') as f:
+    for keyword in f:
+        VOCAB.append(keyword.strip())
 
 labels_to_images = {}
 for line in open(other_base / Path('Flickr8k.token.txt'), 'r'):
