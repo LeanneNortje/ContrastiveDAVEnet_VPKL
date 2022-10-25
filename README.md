@@ -11,13 +11,13 @@ I provide no guarantees with this code, but I do believe the experiments in the 
 To clone the repository run:
 
 ```
-git clone https://github.com/LeanneNortje/DAVEnet_VPKL.git
+git clone https://github.com/LeanneNortje/ContrastiveDAVEnet_VPKL.git
 ```
 
 To get into the repository run:
 
 ```
-cd DAVEnet_VPKL/
+cd ContrastiveDAVEnet_VPKL/
 ```
 
 ## VPKL visual keys
